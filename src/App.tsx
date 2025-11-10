@@ -47,9 +47,6 @@ export const App = () => {
           });
         }
       })
-      .catch(err => {
-        throw new Error(err);
-      })
       .finally(() => setLoading(false));
   };
 
