@@ -10,7 +10,7 @@ type Props = {
   error: string | null;
   onQuery: (query: string) => void;
   onSubmit: (movies: React.FormEvent) => void;
-  onError: (value: null) => void;
+  onError: (value: string | null) => void;
   onAdd: (movie: Movie) => void;
 };
 

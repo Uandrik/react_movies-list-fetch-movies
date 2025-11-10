@@ -16,7 +16,6 @@ export const App = () => {
     if (movies.find(curMovie => curMovie.imdbId === movie.imdbId)) {
       setSubmitedValue(null);
       setQuery('');
-      setError('This movie has added before!');
 
       return;
     }
@@ -36,13 +35,13 @@ export const App = () => {
         if ('Error' in response) {
           setError(response.Error);
         } else {
-          console.log(response.Poster);
           setSubmitedValue({
             title: response.Title,
             description: response.Plot,
             imgUrl:
-              response.Poster ||
-              'https://via.placeholder.com/360x270.png?text=no%20preview',
+              response.Poster && response.Poster !== 'N/A'
+                ? response.Poster
+                : 'https://via.placeholder.com/360x270.png?text=no%20preview',
             imdbUrl: `https://www.imdb.com/title/${response.imdbID}`,
             imdbId: response.imdbID,
           });
